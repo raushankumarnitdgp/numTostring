@@ -1,12 +1,26 @@
 
+
 document.getElementById("convert").addEventListener('click',convert);
 
 function convert()
 {
-    var num=document.getElementById("number").value;
-    document.getElementById("toString").innerHTML=numTostring(num);  
-}
+    var text=document.getElementById("number").value;
+    var numberPattern = /\d+/g;
+    var numArr=text.match(numberPattern);
+    var numStrarr=[];
 
+    for(var i=0;i<numArr.length;i++)
+    {
+        numStrarr[i]=numTostring(numArr[i]);
+    }
+
+    for(i=0;i<numArr.length;i++)
+    {
+        text=text.replace(numArr[i],numStrarr[i]);
+    }
+
+    document.getElementById("toString").innerHTML=text;  
+}
 
 
 

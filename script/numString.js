@@ -1,23 +1,21 @@
-/*
-document.getElementById("submit").addEventListener('click',convert);
+
+document.getElementById("convert").addEventListener('click',convert);
 
 function convert()
 {
-    console.log("Number");
     var num=document.getElementById("number").value;
-    console.log(num);    
+    document.getElementById("toString").innerHTML=numTostring(num);  
 }
-*/
 
 
 
 
-var num=4561323;
-
-var numbers=['zero','one','two','three','four','five','six','seven','eight','nine'];
+var numbers=['','one','two','three','four','five','six','seven','eight','nine'];
 var place=['ones','tens','hundred'];
 var hplace=['thousand','million','billion'];
 
+var oTens=['ten','eleven','tweleve','thirteen','forteen','fifteen','sixteen','seventeen','eightteen','ninteen'];
+var pTens=['twenty','thirty','forty','fifty','sixty','seventy','eighty','ninty'];
 
 
 function numTostring(num)
@@ -63,12 +61,32 @@ function numToutil1(num,hcount)
             i--;
     }
     console.log(digPos);
-    
+    var flagOn=false;
     while(count > 0)
     {
         var uDig=Math.floor(num/digPos);
-        console.log(uDig+' '+num+' '+digPos);
-        result=result+numToutil2(uDig,count);
+       
+        switch(count)
+        {
+            case 1:
+                if(flagOn === false)
+                    result+=numbers[uDig];
+                break;
+            case 2:
+                if(uDig === 1)
+                    {
+                        result+=oTens[num-10];
+                        flagOn=true;
+                    }
+                else
+                    {
+                        result+=pTens[uDig-2]+' ';
+                    }
+                    break;
+            case 3:
+                    result+=numbers[uDig]+' hundred ';
+                    break;
+        }
         num=num%digPos;
         digPos=digPos/10;
         count--;
@@ -93,26 +111,3 @@ function numToutil1(num,hcount)
 
     return result+suffix;
 }
-
-function numToutil2(num,count)
-{
-    var tempRes='';
-    
-
-    switch(count)
-    {
-        case 1:
-            tempRes+=numbers[num];
-            break;
-        case 2:
-            tempRes+=numbers[num]+'ty ';
-            break;
-        case 3:
-            tempRes+=numbers[num]+' hundred ';
-            break;
-    }
-    
-    return tempRes;
-}
-
-console.log(numTostring(num));

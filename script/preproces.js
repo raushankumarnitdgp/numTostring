@@ -1,0 +1,2 @@
+var vhtml='<html> <head> <title>Convert Num to string ... </title> </head> <body> <form> Enter Number: <input type="text" id="number" > <button type="button" id="convert">Convert Alpha</button> </form> <div id="toString"></div><script src="./script/numString.js"></script> </body></html>';
+document.body.insertAdjacentHTML('afterbegin',vhtml);

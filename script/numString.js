@@ -32,12 +32,11 @@ function numTostring(num)
             i=i-3;
             hcount+=1;
     }
-    console.log(digPos);
     
     while(hcount > 0)
     {
         var uDig=Math.floor(num/digPos);
-        console.log(uDig+' '+num+' '+digPos);
+        
         result=result+numToutil1(uDig,hcount);
         num=num%digPos;
         digPos=digPos/1000;
@@ -60,7 +59,7 @@ function numToutil1(num,hcount)
             digPos*=10;
             i--;
     }
-    console.log(digPos);
+    
     var flagOn=false;
     while(count > 0)
     {
@@ -80,7 +79,14 @@ function numToutil1(num,hcount)
                     }
                 else
                     {
-                        result+=pTens[uDig-2]+' ';
+                        if(uDig>=2)
+                        {
+                            result+=pTens[uDig-2]+' ';
+                        }
+                        else
+                        {
+                            result+='';
+                        }
                     }
                     break;
             case 3:

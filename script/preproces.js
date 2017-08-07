@@ -1,2 +1,2 @@
-var vhtml='<html> <head> <title>Convert Num to string ... </title> </head> <body> <form> Enter Number: <input type="text" id="number" > <button type="button" id="convert">Convert Alpha</button> </form> <div id="toString"></div><script src="./script/numString.js"></script> </body></html>';
-document.body.insertAdjacentHTML('afterbegin',vhtml);
+var vhtml = '<title>Convert Num to string ...</title><form>Enter text containing numbers: <input id=number> <button id=convert1 type=button>Number to Words</button></form><div id=toString></div><form>Enter Number in Words: <input id=numword> <button id=convert2 type=button>Word form to Number</button></form><div id=toNumber></div><script src=./script/numString.js></script><script src=./script/stringTonum.js></script>';
+document.body.insertAdjacentHTML('afterbegin', vhtml);

@@ -1,6 +1,6 @@
-document.getElementById("convert").addEventListener('click', convert);
+document.getElementById("convert1").addEventListener('click', convert1);
 
-function convert() {
+function convert1() {
   var text = document.getElementById("number").value;
   var numberPattern = /\d+/g;
   var numArr = text.match(numberPattern);
@@ -25,7 +25,7 @@ var place = ['ones', 'tens', 'hundred'];
 var hplace = ['thousand', 'million', 'billion'];
 
 var oTens = ['ten', 'eleven', 'tweleve', 'thirteen', 'forteen', 'fifteen', 'sixteen', 'seventeen', 'eightteen', 'ninteen'];
-var pTens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninty'];
+var pTens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
 
 function numTostring(num) {

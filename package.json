@@ -1,35 +1,31 @@
 {
-  "name": "numTostring",
-  "version": "1.0.0",
-  "description": "Javascript function to convert number to its string format , and string format to number.",
-  "main": "index.js",
-  "scripts": {
-    "test": " karma start karma.conf.js "
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/raushankumarnitdgp/numTostring.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/raushankumarnitdgp/numTostring/issues"
-  },
-  "homepage": "https://github.com/raushankumarnitdgp/numTostring#readme",
-  "devDependencies": {
-    "eslint": "^4.4.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "^0.4.5",
-    "jasmine-core": "^2.5.2",
-    "karma": "^1.7.0",
-    "karma-coverage": "^1.1.1",
-    "karma-firefox-launcher": "~0.1",
-    "karma-jasmine": "^1.0.2",
-    "karma-phantomjs-launcher": "^1.0.2"
-  }
+    "name": "numTostring",
+    "version": "1.0.0",
+    "description": "Javascript function to convert number to its string format , and string format to number.",
+    "main": "index.js",
+    "scripts": {
+        "test": " karma start karma.conf.js "
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/raushankumarnitdgp/numTostring.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/raushankumarnitdgp/numTostring/issues"
+    },
+    "homepage": "https://github.com/raushankumarnitdgp/numTostring#readme",
+    "devDependencies": {
+        "eslint": "^4.3.0",
+        "eslint-config-standard": "^10.2.1",
+        "jasmine-core": "^2.7.0",
+        "karma": "^1.7.0",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-coverage": "^1.1.1",
+        "karma-firefox-launcher": "^1.0.1",
+        "karma-fixture": "^0.2.6",
+        "karma-jasmine": "^1.1.0"
+    }
 }

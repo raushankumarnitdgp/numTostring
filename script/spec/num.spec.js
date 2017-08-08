@@ -22,20 +22,20 @@ describe('Number to String', function() {
   })
 })
 
-describe('Convert numical word to array',function(){
-  beforeEach(function(){
-    numWord='one thousand';
+describe('Convert numical word to array', function() {
+  beforeEach(function() {
+    numWord = 'one thousand';
   })
-  it('to numerical word array',function(){
+  it('to numerical word array', function() {
     expect(stringTonumArr(numWord)[1]).toBe('thousand');
   })
 })
 
-describe('Convert numical word to array',function(){
-  beforeEach(function(){
-    numWord='one hundred and two';
+describe('Convert numical word to array', function() {
+  beforeEach(function() {
+    numWord = 'one hundred and two';
   })
-  it('returns numerical valaue of word',function(){
+  it('returns numerical valaue of word', function() {
     expect(wordTonum(numWord)).toBe(102);
     expect(wordTonum('one thousand')).toBe(1000);
     expect(wordTonum('one million')).toBe(1000000);
@@ -47,27 +47,26 @@ describe('Convert numical word to array',function(){
 
 
 
-describe('String to word array',function(){
-  beforeEach(function(){
-    text='I have one hundred and two cake . there are forty five thousand . Fifty';
+describe('String to word array', function() {
+  beforeEach(function() {
+    text = 'I have one hundred and two cake . there are forty five thousand . Fifty';
   })
-  it('should populate the wordArr',function(){
+  it('should populate the wordArr', function() {
     //expect(towordArr(text)).toBe('one ');
+    towordArr(text);
   })
 })
 
 
-describe('Convert',function(){
-  beforeEach(function(){
-    text='You have one hundred and two cake';
+describe('Convert', function() {
+  beforeEach(function() {
+    text = 'You have one hundred and two cake';
   })
-  it('should ....',function(){
+  it('should ....', function() {
     expect(convertWord(text)).toBe('You have 100 and 2 cake');
-    text='thousands';
+    text = 'thousands';
     expect(convertWord(text)).toBe('1000s');
-    text='one million and one billion';
+    text = 'one million and one billion';
     expect(convertWord(text)).toBe('1000000 and 1000000000');
   })
 })
-
-

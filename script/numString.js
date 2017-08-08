@@ -6,8 +6,7 @@ function convert1() {
   var numArr = text.match(numberPattern);
   var numStrarr = [];
 
-  if(numArr === null)
-  {
+  if (numArr === null) {
     document.getElementById("toString").innerHTML = text;
     return 1;
   }
@@ -20,10 +19,10 @@ function convert1() {
     text = text.replace(numArr[i], numStrarr[i]);
   }
 
-  text=text.replace('onest','first');
-  text=text.replace('twond','second');
-  text=text.replace('threerd','third');
-  text=text.replace('fiveth','fifth');
+  text = text.replace('onest', 'first');
+  text = text.replace('twond', 'second');
+  text = text.replace('threerd', 'third');
+  text = text.replace('fiveth', 'fifth');
   document.getElementById("toString").innerHTML = text;
   return 1;
 }

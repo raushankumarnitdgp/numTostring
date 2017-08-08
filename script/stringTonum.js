@@ -1,23 +1,22 @@
-
 document.getElementById("convert2").addEventListener('click', convert2);
 
-function insertSpace(text){
-    var separators = ['+',"'", '-', '(', ')', '*', '/', ':', '?','.',',','%','@','#','$','%','^','&',';','[',']','{','}','>','<'];
-    for (var i = 0; i < separators.length; i++) { 
-      var rg = new RegExp("\\" + separators[i], "g"); 
-      text = text.replace(rg, " " + separators[i] + " "); 
-    }
-    return text;
+function insertSpace(text) {
+  var separators = ['+', "'", '-', '(', ')', '*', '/', ':', '?', '.', ',', '%', '@', '#', '$', '%', '^', '&', ';', '[', ']', '{', '}', '>', '<'];
+  for (var i = 0; i < separators.length; i++) {
+    var rg = new RegExp("\\" + separators[i], "g");
+    text = text.replace(rg, " " + separators[i] + " ");
+  }
+  return text;
 }
 
 function convert2() {
   var text = document.getElementById("numword").value;
-  text=insertSpace(text);
-  text= convertWord(text);
-  text=text.replace('first','1st');
-  text=text.replace('second','2nd');
-  text=text.replace('third','3rd');
-  text=text.replace('fifth','5th');
+  text = insertSpace(text);
+  text = convertWord(text);
+  text = text.replace('first', '1st');
+  text = text.replace('second', '2nd');
+  text = text.replace('third', '3rd');
+  text = text.replace('fifth', '5th');
   document.getElementById("toNumber").innerHTML = text;
   document.getElementById("numword").value = "";
   return 1;
@@ -64,54 +63,11 @@ var position = {
   'billion': 1000000000
 };
 
-
-
 function stringTonumArr(numWord) {
   var numArr = numWord.split(' ');
   return numArr;
 }
 
-/*
-function wordTonum(numWord)
-{
-    var numArr=stringTonumArr(numWord);
-    var result=0;
-    var place=1;
-    var dig=0;
-    //nine million nine hundred nity nine thousand
-    for(var i=0;i<numArr.length;){
-        
-        if(i< numArr.length && tens[numArr[i]] != null){
-            dig=tens[numArr[i++]];
-        }
-
-        if(i< numArr.length && nums[numArr[i]] != null){
-            dig+=nums[numArr[i++]];
-        }
-        
-
-
-        if(i< numArr.length && numArr[i] == 'hundrenumsd')
-        {
-            dig=dig*100;
-            i++;
-            if(i< numArr.length && tens[numArr[i]] != null){
-                dig=tens[numArr[i++]];
-        }
-        }
-        if(i< numArr.length && position[numArr[i]] != null){
-            place=position[numArr[i++]];
-        }
-        
-        result+=dig*seema and hundredplace;
-        place=1;
-        dig=0;
-    }
-    return result;
-}*/
-
-
-//nine million nine hundred nity nine thousand
 function wordTonum(numWord) {
   var numArr = stringTonumArr(numWord);
   var result = 0;
@@ -123,14 +79,14 @@ function wordTonum(numWord) {
       temp += tens[numArr[i]];
     } else if (position[numArr[i]] != null) {
       if (numArr[i] !== 'hundred') {
-        if(temp === 0)
-            temp=1;
+        if (temp === 0)
+          temp = 1;
         result += temp * position[numArr[i]];
         temp = 0;
       } else {
-        if(temp === 0)
-            temp=1;
-                
+        if (temp === 0)
+          temp = 1;
+
         temp *= 100;
       }
     }
@@ -140,130 +96,111 @@ function wordTonum(numWord) {
 }
 
 
-var realArr=[];
+var realArr = [];
 
-function convertWord(text)
-{
-    var wordArr=towordArr(text);
-    var numbers=[];
-    var i=0;
-    for(i=0;i<wordArr.length;i++){
-        numbers[i]=wordTonum(wordArr[i]);
-    }
+function convertWord(text) {
+  var wordArr = towordArr(text);
+  var numbers = [];
+  var i = 0;
+  for (i = 0; i < wordArr.length; i++) {
+    numbers[i] = wordTonum(wordArr[i]);
+  }
 
-    for(i=0;i<realArr.length;i++){
-        realArr[i]=realArr[i].trim();
-    }
+  for (i = 0; i < realArr.length; i++) {
+    realArr[i] = realArr[i].trim();
+  }
 
-    for(i=0;i<realArr.length;i++){
-        text = text.replace(realArr[i],numbers[i]);
-    }
+  for (i = 0; i < realArr.length; i++) {
+    text = text.replace(realArr[i], numbers[i]);
+  }
 
-    //
-    text=insertSpace(text);
-    text=' '+text+' ';
-    var ltext=text.toLowerCase();
-    var words=ltext.split(' ');
-    for(i=0;i<words.length;i++){
-        for(var j in nums){
-            if(words[i].lastIndexOf(j, 0) === 0){
-                
-                words[i]=words[i].replace(j,nums[j]);
-            }
-        }
-        for(var j in tens){
-            if(words[i].lastIndexOf(j, 0) === 0){
-                words[i]=words[i].replace(j,tens[j]);
-            }
-        }
-        for(var j in position){
-            if(words[i].lastIndexOf(j, 0) === 0){
-                words[i]=words[i].replace(j,position[j]);
-            }
-        }
-    }
-    var originWord=text.split(' ');
-    for(i=0;i<words.length;i++){
-        if(originWord[i].toLowerCase() !== words[i].toLowerCase()){
-            originWord[i]=words[i];
-        }
-    }
+  text = insertSpace(text);
+  text = ' ' + text + ' ';
+  var ltext = text.toLowerCase();
+  var words = ltext.split(' ');
+  for (i = 0; i < words.length; i++) {
+    for (var j in nums) {
+      if (words[i].lastIndexOf(j, 0) === 0) {
 
-    text=originWord.join(' ');
-    text=text.trim();
-    return text;
+        words[i] = words[i].replace(j, nums[j]);
+      }
+    }
+    for (var j in tens) {
+      if (words[i].lastIndexOf(j, 0) === 0) {
+        words[i] = words[i].replace(j, tens[j]);
+      }
+    }
+    for (var j in position) {
+      if (words[i].lastIndexOf(j, 0) === 0) {
+        words[i] = words[i].replace(j, position[j]);
+      }
+    }
+  }
+  var originWord = text.split(' ');
+  for (i = 0; i < words.length; i++) {
+    if (originWord[i].toLowerCase() !== words[i].toLowerCase()) {
+      originWord[i] = words[i];
+    }
+  }
+
+  text = originWord.join(' ');
+  text = text.trim();
+  return text;
 }
 
 
-function towordArr(text)
-{
-    var ltext=text.toLowerCasetext=text.toLowerCase();
-    var lstr=stringTonumArr(ltext);
-    var rstr=stringTonumArr(text);
-    var wordArr=[];
-    
-    var i=0,j=0;
-    var last='';
-    while(i < lstr.length){
-        if(lstr[i] in nums){
-            //console.log('In Nums: '+lstr[i]);
-            if(last === 'nums' ||last === 'n'){
-                j++;
-            }
-            if(wordArr[j] != null){
-                wordArr[j]+=(lstr[i]+' ');
-                realArr[j]+=(rstr[i]+' ');
-            }
-            else{
-                wordArr[j]=(lstr[i]+' ');
-                realArr[j]=(rstr[i]+' ');
-            }
-            last='nums';
-        }
-        else if(lstr[i] in tens){
-            //console.log('In tens: '+lstr[i]);
-            if(last === 'nums' || last === 'tens' ||last === 'n'){
-                j++;
-            }
-            if(wordArr[j] != null){
-                wordArr[j]+=(lstr[i]+' ');
-                realArr[j]+=(rstr[i]+' ');
-            }
-            else{
-                wordArr[j]=(lstr[i]+' ');
-                realArr[j]=(rstr[i]+' ');
-            }
-            last='tens';
-        }
-        else if(lstr[i] in position){
-            //console.log('In position: '+lstr[i]);
-            if(last === 'position' ||last === 'n'){
-                j++;
-            }
-            if(wordArr[j] != null){
-                wordArr[j]+=(lstr[i]+' ');
-                realArr[j]+=(rstr[i]+' ');
-            }
-            else{
-                wordArr[j]=(lstr[i]+' ');
-                realArr[j]=(rstr[i]+' ');
-            }
-            last='position';
-        }
-        else{
-            //console.log(lstr[i]);
-            if(last === 'nums' || last === 'tens' || last === 'position'){
-               /* if(lstr[i]!= 'and'){
-                    
-                }convertWord
-                if(lstr[i] === 'and'){
-                    realArr[j]+='and ';
-                }*/
-                last='n';
-            }
-        }
-        i++;
-    }
+function towordArr(text) {
+  var ltext = text.toLowerCasetext = text.toLowerCase();
+  var lstr = stringTonumArr(ltext);
+  var rstr = stringTonumArr(text);
+  var wordArr = [];
 
-    return wordArr;
+  var i = 0,
+    j = 0;
+  var last = '';
+  while (i < lstr.length) {
+    if (lstr[i] in nums) {
+      if (last === 'nums' || last === 'n') {
+        j++;
+      }
+      if (wordArr[j] != null) {
+        wordArr[j] += (lstr[i] + ' ');
+        realArr[j] += (rstr[i] + ' ');
+      } else {
+        wordArr[j] = (lstr[i] + ' ');
+        realArr[j] = (rstr[i] + ' ');
+      }
+      last = 'nums';
+    } else if (lstr[i] in tens) {
+      if (last === 'nums' || last === 'tens' || last === 'n') {
+        j++;
+      }
+      if (wordArr[j] != null) {
+        wordArr[j] += (lstr[i] + ' ');
+        realArr[j] += (rstr[i] + ' ');
+      } else {
+        wordArr[j] = (lstr[i] + ' ');
+        realArr[j] = (rstr[i] + ' ');
+      }
+      last = 'tens';
+    } else if (lstr[i] in position) {
+      if (last === 'position' || last === 'n') {
+        j++;
+      }
+      if (wordArr[j] != null) {
+        wordArr[j] += (lstr[i] + ' ');
+        realArr[j] += (rstr[i] + ' ');
+      } else {
+        wordArr[j] = (lstr[i] + ' ');
+        realArr[j] = (rstr[i] + ' ');
+      }
+      last = 'position';
+    } else {
+      if (last === 'nums' || last === 'tens' || last === 'position') {
+        last = 'n';
+      }
+    }
+    i++;
+  }
+  return wordArr;
 }

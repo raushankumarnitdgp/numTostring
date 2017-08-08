@@ -46,3 +46,28 @@ describe('Convert numical word to array',function(){
 })
 
 
+
+describe('String to word array',function(){
+  beforeEach(function(){
+    text='I have one hundred and two cake . there are forty five thousand . Fifty';
+  })
+  it('should populate the wordArr',function(){
+    //expect(towordArr(text)).toBe('one ');
+  })
+})
+
+
+describe('Convert',function(){
+  beforeEach(function(){
+    text='You have one hundred and two cake';
+  })
+  it('should ....',function(){
+    expect(convertWord(text)).toBe('You have 100 and 2 cake');
+    text='thousands';
+    expect(convertWord(text)).toBe('1000s');
+    text='one million and one billion';
+    expect(convertWord(text)).toBe('1000000 and 1000000000');
+  })
+})
+
+
